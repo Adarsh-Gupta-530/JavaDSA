@@ -37,7 +37,8 @@ public class LargestSubarraywithSum0 {
             }
         }
         return maxCount;
-    }
+    } 
+    // optimal -> O(n),SC->O(n)
     public static void main(String[] args) {
         // int arr[] = {15, -2, 2, -8, 1, 7, 10, 23}; // total subarrays are => (n*(n+1))/2
         // int arr[] = {2, 10, 4};
