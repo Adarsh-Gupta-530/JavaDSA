@@ -1,5 +1,4 @@
-import java.util.Arrays;
-
+import java.util.*;
 public class LargestSubarraywithSum0 {
     public static int Brute(int nums[]){
         // TC ->O(n^3)
@@ -38,12 +37,32 @@ public class LargestSubarraywithSum0 {
         }
         return maxCount;
     } 
-    // optimal -> O(n),SC->O(n)
+    public static int Optimal(int nums[]){
+        // optimal -> O(n),SC->O(n)
+        int n = nums.length;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        int maxCount = 0;
+        int sum = 0;
+        for(int i = 0; i<n;i++){
+            sum+=nums[i];
+            if(sum==0){
+                maxCount = i+1;
+            }else{
+                if(map.containsKey(sum)){
+                    maxCount = Math.max(maxCount, i-map.get(sum));
+                }else{
+                    map.put(sum, i);
+                }
+            }
+        }
+        return maxCount;
+    }
     public static void main(String[] args) {
-        // int arr[] = {15, -2, 2, -8, 1, 7, 10, 23}; // total subarrays are => (n*(n+1))/2
+        int arr[] = {15, -2, 2, -8, 1, 7, 10, 23}; // total subarrays are => (n*(n+1))/2
         // int arr[] = {2, 10, 4};
-        int arr[] = {1, 0, -4, 3, 1, 0};
+        // int arr[] = {1, 0, -4, 3, 1, 0};
         // System.out.println(Brute(arr));
-        System.out.println(Better(arr));
+        // System.out.println(Better(arr));
+        System.out.println(Optimal(arr));
     }
 }
