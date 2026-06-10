@@ -32,12 +32,12 @@ public class GFGTopViewOfBinaryTree {
             if(curr == null){
                 if(q.isEmpty()){
                     break;
-                }else{
-                    q.add(null);
                 }
+                q.add(null);
+                continue;
             }
 
-            if(map.containsKey(curr.hd)){
+            if(!map.containsKey(curr.hd)){
                 map.put(curr.hd, curr.node); // first time
             }
 
@@ -51,7 +51,7 @@ public class GFGTopViewOfBinaryTree {
             }
         }
         for(int i =min; i<=max ; i++){
-            System.out.println(map.get(i).data);
+            System.out.print(map.get(i).data+" ");
         }
         System.out.println();
 
